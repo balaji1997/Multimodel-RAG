@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from database import engine, Base
 from routers import route
+from chatbot import router as chatbot_router  # Import chatbot router
 
 # Create the database tables
 Base.metadata.create_all(bind=engine)
@@ -17,10 +18,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 # Include authentication routes
 app.include_router(route.router)
 
+# Include chatbot routes
+app.include_router(chatbot_router, prefix="/chatbot")
+
 @app.get("/")
 def root():
-    return {"message": "Welcome to the FastAPI backend!"}
+    return {"message": "Welcome to the FastAPI backend with Chatbot integration!"}
