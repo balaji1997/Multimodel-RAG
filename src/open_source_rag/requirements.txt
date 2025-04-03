@@ -1,0 +1,10 @@
+torch
+faiss-cpu
+sentence-transformers
+streamlit
+llama-cpp-python
+langchain
+langchain-community
+langchain-core
+chromadb
+tiktoken
